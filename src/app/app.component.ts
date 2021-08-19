@@ -1,10 +1,24 @@
-import { Component, VERSION } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
+import { ObserverPostingService } from './observer-posting.service';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent  {
-  name = 'Angular ' + VERSION.major;
+export class AppComponent implements OnInit {
+  title = 'observables';
+  constructor(private observerPostingService: ObserverPostingService) {}
+
+  ngOnInit() {}
+  observerNext(val: string) {
+    this.observerPostingService.observerSubjectNext(val);
+  }
+  observerError(val: string) {
+    this.observerPostingService.observerSubjectError(val);
+  }
+  observerComplete() {
+    this.observerPostingService.observerSubjectComplete();
+  }
 }

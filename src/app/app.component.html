@@ -1,4 +1,6 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<input type="text" #inputObserver />
+<button (click)="observerNext(inputObserver.value)">Next</button>
+<button (click)="observerError(inputObserver.value)">Error</button>
+<button (click)="observerComplete()">Complete</button>
+
+<router-outlet></router-outlet>
